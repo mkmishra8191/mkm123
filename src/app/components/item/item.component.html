@@ -1,0 +1,38 @@
+<h2 class="text-center">To Do List</h2>
+
+
+  
+
+<div style="margin:0px 0px">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of items ">
+      <span class="hover-cursor" [class.text-success]="item.completed" (click) ="alterCheck(item, item.completed)">
+        <i class="fa fa-lg" [ngClass]="item.completed?'fa-check-circle-o':'fa-circle-thin'"></i>
+      </span>
+       {{item.title}}
+      
+      
+      
+      
+      
+      <span class="hover-cursor text-danger pull-right" (click)="deleteItem(item)">
+        <i class="fa fa-trash-o fa-lg"></i>
+      </span>
+    </li>
+  </ul>
+</div>
+
+<ng-template #inputBox>
+  <div class="input-group">
+  <input type="text" class="form-control" name="title" [(ngModel)]="item.title"  (dblclick)="onSubmit()">
+    
+      
+    
+  </div>
+</ng-template>
+
+
+
+<div *ngIf = "!showInputBox; else inputBox" class="center"  (click)="OnClickPlus()">
+<i class="fa fa-plus-circle fa-2x"></i>
+</div>
