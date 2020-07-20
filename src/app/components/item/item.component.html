@@ -23,12 +23,13 @@
 </div>
 
 <ng-template #inputBox>
+
+  <form (ngSubmit)="onSubmit()">
   <div class="input-group">
-  <input type="text" class="form-control" name="title" [(ngModel)]="item.title"  (dblclick)="onSubmit()">
-    
-      
+  <input type="text" class="form-control" name="title" [(ngModel)]="item.title">
     
   </div>
+</form>
 </ng-template>
 
 
