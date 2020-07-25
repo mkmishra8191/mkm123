@@ -90,8 +90,8 @@ export class ItemComponent implements OnInit {
 
   onSubmit(itemTitle){
 
-   let itemsList=this.items.filter(a=>a.title==itemTitle.value && a.completed==false);
-   let   itemsCompleted=this.items.filter(a=>a.title==itemTitle.value && a.completed==true);
+   let itemsList=this.items.filter(a=>a.title.toLowerCase==itemTitle.value.toLowerCase&& a.completed==false);
+   let   itemsCompleted=this.items.filter(a=>a.title.toLowerCase==itemTitle.value.toLowerCase && a.completed==true);
 
    console.log(this.itemsC)
     
