@@ -1,11 +1,14 @@
-<h2 class="text-center">To Do List</h2>
-
-
+<ng-template #toDoItems>
+<br />
+<div class="center">
+  <h5 >To Do List</h5>
+  </div>
+<br />
   
 
 <div style="margin:0px 0px">
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let item of items ">
+    <li class="list-group-item" *ngFor="let item of itemsL ">
       <span class="hover-cursor" [class.text-success]="item.completed" (click) ="alterCheck(item, item.completed)">
         <i class="fa fa-lg" [ngClass]="item.completed?'fa-check-circle-o':'fa-circle-thin'"></i>
       </span>
@@ -24,11 +27,15 @@
 
 <ng-template #inputBox>
 
-  <form (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit(itemTitle)">
+    
+     
   <div class="input-group">
-  <input type="text" class="form-control" name="title" [(ngModel)]="item.title">
+    
+  <input  type="text" class="form-control" #itemTitle autofocus  >
     
   </div>
+
 </form>
 </ng-template>
 
@@ -36,4 +43,46 @@
 
 <div *ngIf = "!showInputBox; else inputBox" class="center"  (click)="OnClickPlus()">
 <i class="fa fa-plus-circle fa-2x"></i>
+<br />
+  
 </div>
+<button (click)="onCompleted()">Completed</button>
+</ng-template>
+
+
+ 
+<div *ngIf = "showCompleted; else toDoItems"   (click)="onCompleted()">
+<br />
+<div class="center">
+  <h5  >Completed</h5>
+</div>
+  <br />
+
+
+<div style="margin:0px 0px"> 
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of itemsC ">
+      <span class="hover-cursor" [class.text-success]="item.completed" (click) ="alterCheck(item, item.completed)">
+        <i class="fa fa-lg" [ngClass]="item.completed?'fa-check-circle-o':'fa-circle-thin'"></i>
+      </span>
+       {{item.title}}
+      
+      
+      
+      
+      
+      <span class="hover-cursor text-danger pull-right" (click)="deleteItem(item)">
+        <i class="fa fa-trash-o fa-lg"></i>
+      </span>
+    </li>
+  </ul>
+</div><br />
+
+ 
+
+
+
+  <button (click)="onToDoList()">toDoList</button>
+  <br />
+</div>
+  

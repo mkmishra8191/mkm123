@@ -61,10 +61,7 @@ export class ItemsService {
     this.itemDoc=this.afs.doc(`items/${item.id}`);
     this.itemDoc.update({'completed':flag});
 
-    setTimeout(() => {this.deleteItem(item)
-      
-    }, 200);
-     
+    
     
     
   }

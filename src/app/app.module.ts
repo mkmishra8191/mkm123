@@ -9,6 +9,12 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import {ItemComponent} from './components/item/item.component'
 import {ItemsService} from './services/items.service';
 
+
+import { AutofocusFixModule } from 'ngx-autofocus-fix';
+
+
+
+
  
 @NgModule({
   declarations: [
@@ -20,7 +26,12 @@ import {ItemsService} from './services/items.service';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase, 'angularfs'),
     AngularFirestoreModule,
-    FormsModule
+    FormsModule,
+
+      AutofocusFixModule.forRoot(),
+
+      
+    
   ],
   providers: [ItemsService],
   bootstrap: [AppComponent]
