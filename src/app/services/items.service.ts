@@ -57,13 +57,15 @@ export class ItemsService {
 
    }
    
+  
+
   checkOrUnCheckTitle(item,flag:boolean) {
     this.itemDoc=this.afs.doc(`items/${item.id}`);
-    this.itemDoc.update({'completed':flag});
-
-    
-    
-    
-  }
-          
+    this.itemDoc.update({'checked':flag});
+    setTimeout(() => {
+      this.itemDoc=this.afs.doc(`items/${item.id}`);
+      this.itemDoc.update({'completed':flag});
+      
+    }, 200);     
+}
 }

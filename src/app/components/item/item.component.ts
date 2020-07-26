@@ -18,6 +18,7 @@ export class ItemComponent implements OnInit {
   item: Item = {
     title: '',
     completed: false,
+    checked: false,
     
   }
 
@@ -29,6 +30,7 @@ export class ItemComponent implements OnInit {
  
  showInputBox: boolean;
  showCompleted:boolean;
+ 
  
  
 
@@ -88,12 +90,12 @@ export class ItemComponent implements OnInit {
   }
   
 
-  onSubmit(itemTitle){
+  onSubmit(){
 
-   let itemsList=this.items.filter(a=>a.title.toLowerCase==itemTitle.value.toLowerCase&& a.completed==false);
-   let   itemsCompleted=this.items.filter(a=>a.title.toLowerCase==itemTitle.value.toLowerCase && a.completed==true);
+   let itemsList=this.items.filter(a=>a.title.toLowerCase()==this.item.title.toLowerCase() && a.completed==false);
+   let   itemsCompleted=this.items.filter(a=>a.title.toLowerCase()==this.item.title.toLowerCase() && a.completed==true);
 
-   console.log(this.itemsC)
+   console.log(itemsList)
     
               if(itemsList.length!= 0){
 
@@ -102,7 +104,7 @@ export class ItemComponent implements OnInit {
 
               if(itemsCompleted.length!= 0){
 
-                alert("Item is copleted");
+                alert("Item is completed");
               } else
          
    
@@ -111,14 +113,14 @@ export class ItemComponent implements OnInit {
 
           
 
-           if(itemTitle.value=='' ){
+           if(this.item.title=='' ){
 
             this.showInputBox=false;
            } else
            
            
-           if(itemTitle.value!='' ){
-            this.item.title=itemTitle.value;
+           if(this.item.title!='' ){
+            
              
              this.itemService.addItem(this.item);
              
@@ -141,10 +143,10 @@ export class ItemComponent implements OnInit {
     this.itemService.deleteItem(item);
   }
 
-  alterCheck(item,completed:boolean){
+  alterCheck(item,checked:boolean,completed:boolean,){ 
 
     
-    this.itemService.checkOrUnCheckTitle(item,!completed)
+    this.itemService.checkOrUnCheckTitle(item,!checked)
     
     
   }
