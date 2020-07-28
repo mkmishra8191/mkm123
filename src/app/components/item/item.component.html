@@ -1,9 +1,9 @@
 <ng-template #toDoItems>
-<br />
-<div class="center">
-  <h5 >To Do List</h5> <button (click)="onCompleted()">Completed</button>
-  </div>
-<br />
+
+<span class="center">
+  <h5 >To Do List</h5> 
+</span><button style="float: right;" (click)="onCompleted()">Completed</button>
+<br /><br />
   
 
 <div style="margin:0px 0px">
@@ -60,11 +60,11 @@
 <div *ngIf = "showCompleted; else toDoItems"   (click)="onCompleted()">
 <br />
 
-<div class="center">
-  <h5>Completed</h5><button (click)="onToDoList()">Active</button>
+<span >
+  <h5 class="center">Completed</h5><button style="float: right;" (click)="onToDoList()">Active</button>
   
-</div>
-  <br />
+</span>
+  <br /><br />
 
 
 <div style="margin:0px 0px"> 
