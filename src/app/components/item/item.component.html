@@ -1,10 +1,22 @@
-<ng-template #toDoItems>
 
-<span class="center">
-  <h5 >To Do List</h5> 
-</span><button style="float: right;" (click)="onCompleted()">Completed</button>
 <br /><br />
-  
+<div class="list-group-item">
+<span class="list"> List
+</span>
+
+
+<span class="buttons">
+<button class="button" (click)="onAll()">All</button>
+<button class="button" (click)="onCompleted()">Completed</button>
+<button class="button" (click)="onToDoList()">To Do</button>
+</span>
+</div>
+
+
+<ng-template #ToDoList>
+<ng-template #ToDo>
+
+   
 
 <div style="margin:0px 0px">
   <ul class="list-group">
@@ -52,19 +64,16 @@
 <br />
   
 </div>
-
 </ng-template>
 
 
- 
-<div *ngIf = "showCompleted; else toDoItems"   (click)="onCompleted()">
-<br />
 
-<span >
-  <h5 class="center">Completed</h5><button style="float: right;" (click)="onToDoList()">Active</button>
-  
-</span>
-  <br /><br />
+
+ 
+<div *ngIf = "showCompleted && !showAll; else ToDo">
+
+
+
 
 
 <div style="margin:0px 0px"> 
@@ -93,4 +102,36 @@
   
   <br />
 </div>
+</ng-template>
+
+<div *ngIf = "showAll && !showCompleted; else ToDoList" >
+  
+  
+  
+  <div style="margin:0px 0px"> 
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of items ">
+        <span class="hover-cursor" [class.text-success]="item.checked" (click) ="alterCheck(item, item.checked)">
+          <i class="fa fa-lg" [ngClass]="item.checked?'fa-check-circle-o':'fa-circle-thin '"></i>
+        </span>
+         {{item.title}}
+        
+        
+        
+        
+        
+        <span class="hover-cursor text-danger pull-right" (click)="deleteItem(item)">
+          <i class="fa fa-trash-o fa-lg"></i>
+        </span>
+      </li>
+    </ul>
+  </div><br />
+   
+   
+  
+  
+  
+    
+    <br />
+  </div>
   

@@ -30,6 +30,8 @@ export class ItemComponent implements OnInit {
  
  showInputBox: boolean;
  showCompleted:boolean;
+ showAll:boolean;
+ 
  
  
  
@@ -41,6 +43,8 @@ export class ItemComponent implements OnInit {
     
     this.showInputBox=false;
     this.showCompleted=false;
+    this.showAll=false;
+    
   
   
    }
@@ -89,7 +93,7 @@ export class ItemComponent implements OnInit {
 
   }
   
-
+ 
   onSubmit(){
 
    let itemsList=this.items.filter(a=>a.title.toLowerCase()==this.item.title.toLowerCase() && a.completed==false);
@@ -155,9 +159,18 @@ export class ItemComponent implements OnInit {
   } 
   onCompleted(){
     this.showCompleted=true;
+    this.showAll=false;
+    
   }
   onToDoList(){
 this.showCompleted=false;
+this.showAll=false;
 
+
+  }
+  onAll(){
+    this.showCompleted=false;
+    this.showAll=true;
+    
   }
 }

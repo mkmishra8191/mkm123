@@ -8,3 +8,13 @@
     justify-content: center;
     
   }
+  .button{
+      float: right;
+  }
+
+  .list{
+      font-size:large;
+      font:bolder;
+      
+  }
+  
