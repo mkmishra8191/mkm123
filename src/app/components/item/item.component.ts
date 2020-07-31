@@ -96,6 +96,10 @@ export class ItemComponent implements OnInit {
  
   onSubmit(){
 
+    let titleTrim=this.item.title.trim();
+
+    this.item.title=titleTrim;
+
    let itemsList=this.items.filter(a=>a.title.toLowerCase()==this.item.title.toLowerCase() && a.completed==false);
    let   itemsCompleted=this.items.filter(a=>a.title.toLowerCase()==this.item.title.toLowerCase() && a.completed==true);
 

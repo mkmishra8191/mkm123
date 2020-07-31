@@ -5,11 +5,12 @@
 </span>
 
 
-<span class="buttons">
-<button class="button" (click)="onAll()">All</button>
-<button class="button" (click)="onCompleted()">Completed</button>
-<button class="button" (click)="onToDoList()">To Do</button>
-</span>
+<ul class="nav">
+
+  <li><button class="button" (click)="onAll()">All</button></li>
+  <li><button class="button" (click)="onCompleted()">Completed</button></li>
+  <li><button class="button" (click)="onToDoList()">To Do</button></li>
+  </ul>
 </div>
 
 
@@ -59,8 +60,8 @@
 
 
 
-<div *ngIf = "!showInputBox; else inputBox" class="center"  (click)="OnClickPlus()">
-<i class="fa fa-plus-circle fa-2x"></i>
+<div *ngIf = "!showInputBox; else inputBox" class="center"  >
+<i class="fa fa-plus-circle fa-2x" (click)="OnClickPlus()"></i>
 <br />
   
 </div>

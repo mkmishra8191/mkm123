@@ -3,13 +3,14 @@
 }
 
   
-.center{
+.i{
     display: flex;
     justify-content: center;
     
   }
-  .button{
+  .nav{
       float: right;
+      background-color: white;
   }
 
   .list{
