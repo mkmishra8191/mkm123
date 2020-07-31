@@ -1,17 +1,23 @@
 
 <br /><br />
-<div class="list-group-item">
-<span class="list"> List
+<div style="margin:0px 0px">
+
+
+
+
+<ul  class="list-group">
+
+  <li class="list-group-item" >
+    <span class="list"> List</span>
+  <span class="nav">
+  <button class="button" (click)="onAll()">All</button>
+  <button class="button" (click)="onCompleted()">Completed</button>
+  <button class="button" (click)="onToDoList()">To Do</button>
 </span>
-
-
-<ul class="nav">
-
-  <li><button class="button" (click)="onAll()">All</button></li>
-  <li><button class="button" (click)="onCompleted()">Completed</button></li>
-  <li><button class="button" (click)="onToDoList()">To Do</button></li>
+</li>
   </ul>
 </div>
+
 
 
 <ng-template #ToDoList>
