@@ -17,6 +17,7 @@ export class ItemComponent implements OnInit {
 
   item: Item = {
     title: '',
+    content:'',
     completed: false,
     checked: false,
     
@@ -94,7 +95,7 @@ export class ItemComponent implements OnInit {
   }
   
  
-  onSubmit(){
+  onSubmit(item:Item){
 
     let titleTrim=this.item.title.trim();
 
@@ -127,18 +128,19 @@ export class ItemComponent implements OnInit {
            } else
            
            
-           if(this.item.title!='' ){
+           if(this.item.title!='' && !this.showAll ){
+
+            
             
              
              this.itemService.addItem(this.item);
              
              this.showInputBox=false;
              this.item.title='';
-             
+             this.item.content='';
              
               
-      }
-
+      }  
     
     }
       
@@ -151,30 +153,63 @@ export class ItemComponent implements OnInit {
     this.itemService.deleteItem(item);
   }
 
-  alterCheck(item,checked:boolean,completed:boolean,){ 
+  alterCheck(item,completed:boolean,){ 
+
+    if(!item.ckecked)
 
     
-    this.itemService.checkOrUnCheckTitle(item,!checked)
+    this.itemService.checkOrUnCheckTitle(item,!completed)
+    this.showCompleted=!this.showCompleted;
     
     
   }
   OnClickPlus() {
     this.showInputBox=true;
   } 
-  onCompleted(){
-    this.showCompleted=true;
-    this.showAll=false;
+  editCheck(){ 
+
+    
+    this.showAll=true
+    
     
   }
-  onToDoList(){
-this.showCompleted=false;
-this.showAll=false;
 
+  updateItem(item:Item,completed:boolean){
+    let titleTrim=this.item.title.trim();
 
-  }
-  onAll(){
+    this.item.title=titleTrim;
+
+   let itemsList=this.items.filter(a=>a.title.toLowerCase()==this.item.title.toLowerCase() && a.completed==false);
+   
+
+   console.log(itemsList)
+    
+              if(itemsList.length!= 0){
+
+                alert("Item is listed");
+              } else
+
+             
+         
+   
+   
+             
+
+          
+
+           if(this.item.title=='' ){
+
+            this.showCompleted=false;
+           } else 
+           
+           
+           
+    this.item.completed=false;
+    this.itemService.updateItem(item);
+    this.itemService.checkOrUnCheckTitle(item,!completed)
+    this.item.title='';
+    this.item.content='';
     this.showCompleted=false;
-    this.showAll=true;
-    
+    this.showAll=false;
   }
 }

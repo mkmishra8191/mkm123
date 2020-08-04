@@ -8,14 +8,21 @@
     justify-content: center;
     
   }
-  .nav{
-      float: right;
-      background-color: white;
-  }
-
-  .list{
-      font-size:large;
-      font:bolder;
-      
-  }
   
+  
+
+  
+      
+  
+  #center{
+    display: flex;
+    justify-content: center;
+    
+  }
+   #textarea{
+       height: 200%;
+   }
+   .center{
+    display: flex;
+    justify-content: center;
+   }
